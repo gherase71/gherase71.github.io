@@ -3,7 +3,7 @@
 # Replace the placeholder values below with your own.
 # ===========================================================================
 
-baseURL = "https://your-gitlab-account-name.github.io"
+baseURL = "https://gherase71.github.io"
 canonifyURLs = true
 locale = "en"
 title = "Cristian Preda"
