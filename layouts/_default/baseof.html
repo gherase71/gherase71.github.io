@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+{{/*
+    Description: Default layout for all page including header, footer and page content.
+    CSS: static/assets/css/components/navbar.css
+                                     /base.css
+                                     /footer.css
+    JS: static/assets/js/navbar.js
+    Usage: Used by all pages
+*/}}
+
+{{ $metaDescription := .Params.description | default site.Params.description }}
+{{ $ogTitle := .Title | default site.Title }}
+{{ $ogImage := .Params.og_image | default "/assets/images/logos/navbar_logo.png" }}
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ if .Title }}{{ .Title }} · {{ site.Title }}{{ else }}{{ site.Title }}{{ end }}</title>
+
+        {{/* SEO */}}
+        <meta name="description" content="{{ $metaDescription | plainify | truncate 160 }}">
+        <link rel="canonical" href="{{ .Permalink }}">
+
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ "assets/css/variables.css" | relURL }}">
+        <link rel="stylesheet" href="{{ "assets/css/components/base.css" | relURL }}">
+        <link rel="stylesheet" href="{{ "assets/css/components/navbar.css" | relURL }}">
+        <link rel="stylesheet" href="{{ "assets/css/components/footer.css" | relURL }}">
+
+        {{ if .Params.css }}
+            <link rel="stylesheet" href="{{ printf "assets/css/pages/%s" .Params.css | relURL }}">
+        {{ end }}
+
+        {{ block "head-extra" . }}{{ end }}
+
+        <link rel="icon" type="image/png" href="{{ "assets/images/logos/favicon.png" | relURL }}">
+    </head>
+
+    <body>
+        {{ partial "navbar.html" . }}
+        <main class="content-wrapper">
+            {{ block "main" . }}{{ end }}
+        </main>
+        {{ partial "footer.html" . }}
+        <script src="{{ "assets/js/navbar.js" | relURL }}"></script>
+    </body>
+
+</html>

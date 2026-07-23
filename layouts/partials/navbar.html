@@ -1,0 +1,49 @@
+{{/*
+    Description: Navbar of the default layout display on all pages.
+    CSS: static/assets/css/components/navbar.css
+    Usage: Included in layouts/_default/baseof.html
+*/}}
+
+{{ $url := .RelPermalink }}
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="{{ "/" | relURL }}" class="nav-logo">
+      {{ site.Title }}
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-menu" id="nav-menu">
+      <a href="{{ "/" | relURL }}"
+         class="{{ if eq $url "/" }}active{{ end }}">Home</a>
+
+      <div class="dropdown" id="dropdown-research">
+        <button class="dropbtn {{ if strings.Contains $url "/research/" }}active{{ end }}" id="dropbtn-research">
+            Research ▾
+        </button>
+        <div class="dropdown-content">
+          <a href="{{ "/research/research-topics/" | relURL }}"
+            class="{{ if strings.Contains $url "research-topics" }}active{{ end }}">
+            Research topics
+          </a>
+          <a href="{{ "/research/publications/" | relURL }}" class="{{ if eq $url "/research/publications/" }}active{{ end }}">Publications</a>
+          <a href="{{ "/research/supervisions/" | relURL }}" class="{{ if eq $url "/research/supervisions/" }}active{{ end }}">Supervisions</a>
+        </div>
+      </div>
+
+      <a href="{{ "/teaching/" | relURL }}"
+         class="{{ if strings.Contains $url "/teaching/" }}active{{ end }}">Teaching</a>
+
+      <a href="{{ "/news/" | relURL }}"
+         class="{{ if strings.Contains $url "/news/" }}active{{ end }}">News</a>
+
+      <a href="{{ "/links/" | relURL }}"
+         class="{{ if strings.Contains $url "/links/" }}active{{ end }}">Links</a>
+    </div>
+  </div>
+</nav>

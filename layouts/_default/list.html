@@ -1,0 +1,17 @@
+{{/*
+    Description: Generic default list layout
+    CSS: static/assets/csscomponents/base.css
+    Usage: Not used but here in case of by default
+*/}}
+
+{{ define "main" }}
+    {{ if .Title }}
+        <h1 class="page-title">{{ .Title }}</h1>
+    {{ end }}
+    {{ .Content }}
+    <ul>
+        {{ range .Pages }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+{{ end }}

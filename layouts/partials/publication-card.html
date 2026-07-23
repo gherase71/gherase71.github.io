@@ -1,0 +1,28 @@
+{{/*
+    Description: Generates a card for each publication from the publications section.
+    CSS: static/assets/css/pages/publications.css
+    Usage: Included in layouts/research/publications-list.html
+*/}}
+
+{{ $pub := . }}
+<div class="pub_card" data-year="{{ $pub.Params.year }}">
+    <div class="pub_card_infos">
+        <h3 class="pub_title">{{ $pub.Title }}</h3>
+
+        {{ with $pub.Params.authors }}
+            <p class="pub_authors">{{ . }}</p>
+        {{ end }}
+
+        <p class="pub_meta">
+            {{ $pub.Params.year }} · {{ $pub.Params.journal }}
+        </p>
+    </div>
+
+    {{ with $pub.Params.abstract }}
+        <p class="pub_abstract">{{ . }}</p>
+    {{ end }}
+
+    {{ with $pub.Params.hal_link }}
+        <a href="{{ . }}" class="pub_link" target="_blank">View on HAL</a>
+    {{ end }}
+</div>

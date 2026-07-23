@@ -1,0 +1,26 @@
+{{/*
+    Description: News list layout. Displays the grid of all news.
+    CSS: static/assets/css/pages/news.css
+                          /components/base.css
+    Usage: Used by content/news/_index.md
+*/}}
+
+{{ define "head-extra" }}{{ end }}
+
+{{ define "main" }}
+    {{ if .Title }}
+        <h1 class="page-title">{{ .Title }}</h1>
+    {{ end }}
+
+    {{ $newsPosts := .Pages.ByDate.Reverse }}
+
+    {{ if gt (len $newsPosts) 0 }}
+        <div class="news_grid">
+            {{ range $newsPosts }}
+                {{ partial "news-card.html" . }}
+            {{ end }}
+        </div>
+    {{ else }}
+        <p class="no_news">There are no news at the moment.</p>
+    {{ end }}
+{{ end }}

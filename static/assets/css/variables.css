@@ -1,0 +1,22 @@
+/**
+ * Stylesheet: All color and typography can be modifiy here without changing all files.
+ * Usage: All other css files
+ */
+
+ @font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype')
+ }
+
+ 
+:root {
+    --pw-primary: #0C0C4F;
+    --pw-accent: #9A0000;
+    --pw-bg: #F6F6F6;
+    --pw-border: #c8c8d4;
+    --pw-muted: #9090a8;
+    --pw-font: 'Space Grotesk', sans-serif;
+}

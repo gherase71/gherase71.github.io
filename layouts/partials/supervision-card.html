@@ -1,0 +1,17 @@
+{{/*
+    Description: Generates a small card for each person from the supervisions section.
+    CSS: static/assets/css/pages/supervisions.css
+    Usage: Included in layouts/research/supervisions-list.html
+*/}}
+
+{{ $supervision := . }}
+
+<div class="supervision_card">
+    <h3 class="supervision_name">{{ $supervision.Params.title }}</h3>
+    {{ with $supervision.Params.institution }}
+    <p class="supervision_institution">{{ . }}</p>
+    {{ end }}
+    {{ with $supervision.Params.subject }}
+    <p class="supervision_subject">{{ . }}</p>
+    {{ end }}
+</div>

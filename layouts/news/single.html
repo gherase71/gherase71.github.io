@@ -1,0 +1,54 @@
+{{/*
+    Description: Single pages layout for news
+    CSS: static/assets/css/single-page/single-news.css
+                          /components/base.css
+    Usage: Used by all pages in the news section
+*/}}
+
+{{ define "head-extra" }}
+    <link rel="stylesheet" href="{{ "assets/css/single-page/single-news.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<main id="primary" class="site-main single_news_container">
+    <article class="single_news_article">
+
+        <header class="single_news_header">
+            <div class="single_news_header_top">
+                <h1 class="single_news_title">{{ .Title }}</h1>
+            </div>
+
+            <div class="single_news_meta_inline">
+                <p class="news_date">
+                    <strong>Published on:</strong> {{ .Date.Format "02/01/2006" }}
+                </p>
+                {{ with .Params.author }}
+                    <p class="news_author">
+                        <strong>By:</strong> {{ . }}
+                    </p>
+                {{ end }}
+            </div>
+
+            <div class="single_news_intro_block">
+
+                {{ with .Params.abstract }}
+                    <p class="single_news_abstract_text">{{ . }}</p>
+                {{ end }}
+
+                {{ with .Params.picture }}
+                    <div class="single_news_picture">
+                        <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+                    </div>
+                {{ end }}
+
+            </div>
+
+        </header>
+
+        <section class="single_news_content entry-content prose">
+            {{ .Content }}
+        </section>
+
+    </article>
+</main>
+{{ end }}

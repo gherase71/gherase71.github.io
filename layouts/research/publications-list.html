@@ -1,0 +1,85 @@
+{{/*
+    Description: Publications list layout. Displays the grid of selected publications, plus all publications fetched from HAL.
+    CSS: static/assets/css/pages/publications.css
+                        /components/base.css
+    JS: static/assets/js/publications.js
+    Usage: Used by content/research/publications.md
+*/}}
+
+{{ define "head-extra" }}{{ end }}
+
+{{ define "main" }}
+{{ $majorPubs := where site.RegularPages "Section" "publications" }}
+{{ $years := slice }}
+{{ range $majorPubs }}
+    {{ $years = $years | append .Params.year }}
+{{ end }}
+{{ $years = $years | uniq | sort }}
+{{ $years = $years | collections.Reverse }}
+
+<div class="pub_wrapper" id="pub_wrapper">
+
+    <div class="pub_toggle" role="tablist">
+        <button
+            class="pub_toggle_btn pub_toggle_btn--active"
+            data-target="major"
+            role="tab"
+            aria-selected="true"
+            aria-controls="pub_section_major"
+        >Selected publications</button>
+
+        <button
+            class="pub_toggle_btn"
+            data-target="hal"
+            role="tab"
+            aria-selected="false"
+            aria-controls="pub_section_hal"
+        >All publications</button>
+    </div>
+
+    <div
+        class="pub_section pub_section--active"
+        id="pub_section_major"
+        role="tabpanel"
+    >
+        <div class="pub_filter">
+            <label class="pub_filter_label" for="pub_filter_major">Filter by year</label>
+            <select class="pub_filter_select" id="pub_filter_major" data-section="major">
+                <option value="all">All years</option>
+                {{ range $years }}
+                    <option value="{{ . }}">{{ . }}</option>
+                {{ end }}
+            </select>
+        </div>
+
+        <div class="pub_grid">
+            {{ if gt (len $majorPubs) 0 }}
+                {{ range $majorPubs }}
+                    {{ partial "publication-card.html" . }}
+                {{ end }}
+            {{ else }}
+                <p class="pub_empty">No publications yet.</p>
+            {{ end }}
+        </div>
+    </div>
+
+    <div
+        class="pub_section"
+        id="pub_section_hal"
+        role="tabpanel"
+        aria-hidden="true"
+    >
+        <div class="pub_filter">
+            <label class="pub_filter_label" for="pub_filter_hal">Filter by year</label>
+            <select class="pub_filter_select" id="pub_filter_hal" data-section="hal" disabled>
+                <option value="all">All years</option>
+            </select>
+        </div>
+
+        <p class="pub_hal_placeholder">Click "All publications" to load.</p>
+    </div>
+
+</div>
+
+<script src="{{ "assets/js/publications.js" | relURL }}"></script>
+{{ end }}

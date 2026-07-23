@@ -1,0 +1,262 @@
+/**
+ * Stylesheet: publications page
+ * Usage: layouts/research/publications.html and content/research/publications.md
+ * Variables: static/assets/css/variables.css
+ */
+
+ 
+
+/* ---------------------------------------------------------------------------
+   Section visibility (controlled by publications.js)
+--------------------------------------------------------------------------- */
+
+.pub_section {
+    display: none;
+}
+
+.pub_section--active {
+    display: block;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Tab toggle buttons
+--------------------------------------------------------------------------- */
+
+.pub_toggle {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 36px;
+    font-family: var(--pw-font);
+    flex-wrap: wrap; /* wraps to a second line on very narrow screens */
+}
+
+.pub_toggle_btn {
+    padding: 12px 24px;
+    border: 1px solid var(--pw-primary);
+    border-radius: 10px;
+    background-color: var(--pw-primary);
+    color: #FFFFFF;
+    font-family: var(--pw-font);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pub_toggle_btn:hover {
+    background-color: #1a1a6e;
+    border-color: #1a1a6e;
+}
+
+/* Active tab — highlighted with accent colour */
+.pub_toggle_btn--active,
+.pub_toggle_btn--active:hover {
+    background-color: var(--pw-accent);
+    border-color: var(--pw-accent);
+    color: #FFFFFF;
+}
+
+.pub_toggle_btn:focus-visible {
+    outline: 2px solid var(--pw-accent);
+    outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Publications list — one card per line
+--------------------------------------------------------------------------- */
+
+.pub_grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Publication card
+--------------------------------------------------------------------------- */
+
+.pub_card {
+    background-color: var(--pw-bg);
+    border: 1px solid var(--pw-border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(12, 12, 79, 0.06);
+    font-family: var(--pw-font);
+}
+
+.pub_card:hover {
+    box-shadow: 0 6px 20px rgba(12, 12, 79, 0.10);
+    border-color: #9090a8;
+}
+
+/* Info block: title, authors, meta */
+.pub_card_infos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pub_title {
+    margin: 0;
+    font-family: var(--pw-font);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--pw-primary);
+    word-break: break-word;
+}
+
+.pub_authors {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--pw-primary);
+    opacity: 0.75;
+}
+
+/* Year and journal — accent colour */
+.pub_meta {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--pw-accent);
+    letter-spacing: 0.02em;
+}
+
+/* Abstract — visually separated from the info block */
+.pub_abstract {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--pw-primary);
+    opacity: 0.75;
+    padding-top: 10px;
+    border-top: 1px solid #9090a8;
+}
+
+/* "View on HAL" link button */
+.pub_link {
+    align-self: flex-start;
+    margin-top: 4px;
+    padding: 6px 14px;
+    border: 1px solid var(--pw-primary);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--pw-primary);
+    font-family: var(--pw-font);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pub_link:hover {
+    background-color: var(--pw-accent);
+    border-color: var(--pw-accent);
+    color: #FFFFFF;
+}
+
+.pub_link:focus:not(:focus-visible) {
+    outline: none;
+}
+.pub_link:focus-visible {
+    outline: 2px solid var(--pw-accent);
+    outline-offset: 2px;
+}
+
+
+/* ---------------------------------------------------------------------------
+   State messages
+--------------------------------------------------------------------------- */
+
+.pub_empty,
+.pub_hal_placeholder {
+    text-align: center;
+    font-family: var(--pw-font);
+    font-size: 0.95rem;
+    color: var(--pw-primary);
+    opacity: 0.6;
+    padding: 40px 0;
+}
+
+/* Error message — visible accent colour */
+.pub_error {
+    text-align: center;
+    font-family: var(--pw-font);
+    font-size: 0.95rem;
+    color: var(--pw-accent);
+    padding: 40px 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Year filter
+--------------------------------------------------------------------------- */
+
+.pub_filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.pub_filter_label {
+    font-family: var(--pw-font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--pw-primary);
+    white-space: nowrap;
+}
+
+.pub_filter_select {
+    padding: 8px 36px 8px 16px;
+    border: 1px solid var(--pw-border);
+    border-radius: 8px;
+    background-color: var(--pw-bg);
+    color: var(--pw-primary);
+    font-family: var(--pw-font);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    /* Custom chevron arrow — removes default browser styling */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230C0C4F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.pub_filter_select:hover  { border-color: var(--pw-primary); }
+.pub_filter_select:focus  { outline: none; border-color: var(--pw-primary); }
+.pub_filter_select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+
+/* ---------------------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+    .pub_toggle {
+        flex-direction: column;
+    }
+
+    .pub_toggle_btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pub_card {
+        padding: 18px 16px;
+    }
+}

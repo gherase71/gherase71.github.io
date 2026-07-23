@@ -1,0 +1,23 @@
+{{/*
+    Description: Generates a card for each news item from the news section.
+    CSS: static/assets/css/pages/news.css
+    Usage: Included in layouts/news/list.html
+*/}}
+
+{{ $news := . }}
+<div class="news_card">
+
+    <div class="news_content">
+        <h3 class="news_title">{{ $news.Title }}</h3>
+        <div class="news_meta_row">
+            <p class="news_date">Published on: {{ $news.Date.Format "02/01/2006" }}</p>
+            {{ with $news.Params.author }}
+                <p class="news_author">By: {{ . }}</p>
+            {{ end }}
+        </div>
+        {{ with $news.Params.abstract }}
+            <p class="news_abstract">{{ . }}</p>
+        {{ end }}
+        <a href="{{ $news.RelPermalink }}" class="news_btn">Read more</a>
+    </div>
+</div>

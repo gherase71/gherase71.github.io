@@ -1,0 +1,14 @@
+{{/*
+    Description: Generic default single layout
+    CSS: static/assets/css/components/base.css
+    Usage: Contact, Legal Notice and Privacy & Cookie Policy
+*/}}
+
+{{ define "main" }}
+    {{ if .Title }}
+        <h1 class="page-title">{{ .Title }}</h1>
+    {{ end }}
+    {{ if .Params.prose }}<div class="prose">{{ end }}
+    {{ .Content }}
+    {{ if .Params.prose }}</div>{{ end }}
+{{ end }}

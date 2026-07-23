@@ -1,0 +1,30 @@
+# ===========================================================================
+# Hugo configuration file
+# Replace the placeholder values below with your own.
+# ===========================================================================
+
+baseURL = "https://your-gitlab-account-name.github.io"
+canonifyURLs = true
+locale = "en"
+title = "Cristian Preda"
+
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Personal website of Cristian Preda, researcher at Inria."
+  email = "cristian.preda@inria.fr"
+[permalinks]
+  [permalinks.page]
+    news = "/news/:slug/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]

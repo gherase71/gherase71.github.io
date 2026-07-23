@@ -1,0 +1,161 @@
+/**
+ * Stylesheet: home page
+ * Usage: layouts/index.html and content/_index.md
+ * Variables: static/assets/css/variables.css
+ */
+
+
+
+/* ---------------------------------------------------------------------------
+   Two-column wrapper: 1/3 researcher card, 2/3 presentation
+--------------------------------------------------------------------------- */
+
+.home-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.home-card {
+    flex: 0 0 30;
+    max-width: 30%;
+    box-sizing: border-box;
+}
+
+.home-main {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Researcher card (left column)
+--------------------------------------------------------------------------- */
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background-color: var(--pw-bg);
+    border: 1px solid var(--pw-border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    font-family: var(--pw-font);
+    box-shadow: 0 2px 8px rgba(12, 12, 79, 0.06);
+}
+
+.home-card_photo {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 3px solid var(--pw-primary);
+}
+
+.home-card_name {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pw-primary);
+}
+
+.home-card_position{
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--pw-primary);
+    opacity: 0.75;
+}
+
+.home-card_institution {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--pw-accent);
+    opacity: 0.75;
+}
+
+.home-card_email {
+    font-size: 0.85rem;
+    font-family: var(--dv-font);
+    font-weight: 600;
+    color: var(--dv-navy);
+    text-decoration: none;
+    word-break: break-word;
+    transition: color 0.15s ease;
+}
+
+.home-card_email:hover {
+    color: var(--dv-red);
+    text-decoration: underline;
+}
+
+.home-card_email:focus-visible {
+    outline: 2px solid var(--dv-red);
+    outline-offset: 2px;
+}
+
+.home-card_email:hover { text-decoration: underline !important; }
+
+/* "Download CV" button */
+.home-card_cv {
+    margin-top: 6px;
+    padding: 8px 18px;
+    border: 1px solid var(--pw-primary);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--pw-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.home-card_cv:hover {
+    background-color: var(--pw-accent);
+    border-color: var(--pw-accent);
+    color: #FFFFFF;
+}
+
+/* Social / profile links row */
+.home-card_socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--pw-border);
+    width: 100%;
+}
+
+.home-card_socials a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--pw-primary);
+    text-decoration: none !important;
+}
+
+.home-card_socials a:hover { color: var(--pw-accent); }
+
+
+/* ---------------------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .home-wrapper {
+        flex-direction: column;
+    }
+
+    .home-card {
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+}

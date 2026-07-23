@@ -1,0 +1,24 @@
+{{/*
+    Description: Footer of the default layout display on all pages.
+    CSS: static/assets/css/components/footer.css
+    Usage: Included in layouts/_default/baseof.html
+*/}}
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-social">
+            {{/*
+                Add your own contact / social links below, one <a> per line.
+                Remove the ones you don't need, or add more (ORCID, Google Scholar,
+                GitHub, LinkedIn, X/Twitter, Mastodon, etc.).
+            */}}
+            <a href="mailto:{{ site.Params.email }}">Email</a>
+            <a href="https://scholar.google.fr/citations?user=hCy7I40AAAAJ&hl=fr" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://github.com/gherase71" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+
+        <div class="footer-links">
+            <p>&copy; {{ now.Format "2006" }} {{ site.Title }}, Built with Hugo</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,40 @@
+{{/*
+    Description: Supervisions list layout. Displays PhD students then postdocs, as separate sections.
+    CSS: static/assets/css/pages/supervisions.css
+                          /components/base.css
+    Usage: Used by content/research/supervisions.md
+*/}}
+
+{{ define "head-extra" }}{{ end }}
+
+{{ define "main" }}
+    {{ if .Title }}
+        <h1 class="page-title">{{ .Title }}</h1>
+    {{ end }}
+
+    {{ $types := slice "phd_student" "postdoc" }}
+    {{ $labels := slice "PhD Students" "Postdocs" }}
+
+    {{ $supervisions := where site.RegularPages "Section" "supervisions" }}
+
+    {{ if gt (len $supervisions) 0 }}
+        {{ range $i, $type := $types }}
+            {{ $sectionLabel := index $labels $i }}
+            {{ $people := where $supervisions "Params.supervision_type" $type }}
+            {{ $people = $people.ByTitle }}
+
+            {{ if gt (len $people) 0 }}
+                <div class="supervision_section">
+                    <h2 class="supervision_section_title">{{ $sectionLabel }}</h2>
+                    <div class="supervision_grid">
+                        {{ range $people }}
+                            {{ partial "supervision-card.html" . }}
+                        {{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        {{ end }}
+    {{ else }}
+        <p class="no_supervision">There are no supervisions to display yet.</p>
+    {{ end }}
+{{ end }}

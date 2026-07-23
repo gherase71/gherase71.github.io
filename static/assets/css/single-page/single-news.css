@@ -1,0 +1,170 @@
+/**
+ * Stylesheet: news own page
+ * Usage: layouts/news/single.html
+ * Variables: static/assets/css/variables.css
+ */
+
+ 
+
+/* ---------------------------------------------------------------------------
+   Page container
+--------------------------------------------------------------------------- */
+
+.single_news_container {
+    max-width: 860px;
+    margin: 48px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    font-family: var(--pw-font);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Article wrapper
+--------------------------------------------------------------------------- */
+
+.single_news_article {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Header block
+--------------------------------------------------------------------------- */
+
+.single_news_header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    background-color: var(--pw-bg);
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.single_news_title {
+    margin: 0;
+    font-family: var(--pw-font);
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--pw-primary);
+    word-break: break-word;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Inline metadata row: date and author
+--------------------------------------------------------------------------- */
+
+.single_news_meta_inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: 0.88rem;
+    color: var(--pw-primary);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--pw-border);
+}
+
+.single_news_meta_inline strong {
+    font-weight: 600;
+}
+
+.news_date,
+.news_author {
+    margin: 0;
+    font-weight: 500;
+    opacity: 0.75;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Intro block: picture on the left, abstract on the right
+--------------------------------------------------------------------------- */
+
+.single_news_intro_block {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 12px;
+}
+
+.single_news_picture {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.single_news_picture img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.single_news_abstract_text {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--pw-primary);
+    opacity: 0.75;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Content
+--------------------------------------------------------------------------- */
+
+/* Typography for the content body is handled globally by .prose in base.css. */
+.single_news_content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 40px;
+    border-top: 2px solid var(--pw-primary);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Image
+--------------------------------------------------------------------------- */
+
+.entry-content img,
+.entry-content .wp-block-image img,
+.entry-content .wp-block-image {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+    .single_news_container {
+        padding: 0 12px;
+        margin: 32px auto;
+    }
+
+    .single_news_header {
+        padding: 24px 20px;
+        margin-bottom: 28px;
+    }
+
+    .single_news_title {
+        font-size: 1.75rem;
+    }
+
+    /* Stack image above abstract on narrow screens */
+    .single_news_intro_block {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}

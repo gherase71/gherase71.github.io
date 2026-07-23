@@ -1,0 +1,115 @@
+/**
+ * Stylesheet: supervisions page
+ * Usage: layouts/research/supervisions-list.html and content/research/supervisions.md
+ * Variables: static/assets/css/variables.css
+ */
+
+
+
+/* ---------------------------------------------------------------------------
+   Section wrapper — one per supervision type (PhD Students, Postdocs)
+--------------------------------------------------------------------------- */
+
+.supervision_section {
+    max-width: 1400px;
+    margin: 0 auto 48px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.supervision_section_title {
+    font-family: var(--pw-font);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--pw-primary);
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--pw-primary);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Grid — small simple cards
+--------------------------------------------------------------------------- */
+
+.supervision_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    font-family: var(--pw-font);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Card
+--------------------------------------------------------------------------- */
+
+.supervision_card {
+    background-color: var(--pw-bg);
+    border: 1px solid var(--pw-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(12, 12, 79, 0.06);
+}
+
+.supervision_card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(12, 12, 79, 0.10);
+    border-color: var(--pw-primary);
+}
+
+.supervision_name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pw-primary);
+}
+
+.supervision_institution {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--pw-accent);
+}
+
+.supervision_subject {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--pw-primary);
+    opacity: 0.75;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Empty state
+--------------------------------------------------------------------------- */
+
+.no_supervision {
+    text-align: center;
+    font-family: var(--pw-font);
+    font-size: 1rem;
+    color: var(--pw-primary);
+    opacity: 0.6;
+    margin: 40px 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+    .supervision_section {
+        padding: 0 12px;
+        margin-bottom: 32px;
+    }
+
+    .supervision_grid {
+        gap: 12px;
+    }
+}
